@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="px-10">
+    <h2>ДОБРО ПОЖАЛОВАТЬ {{ user.username }}</h2>
+
+    {% if newuser.photo_avatar %}
+        <img src="{{ newuser.photo_avatar.url }}">
+    {% else %}
+        <div class="non_avatar">
+            <h3 id="non_avatar">ДОБАВЬТЕ АВАТАР</h3>
+        </div>
+    {% endif %}
+
+    {% if newuser == request.user %}
+        <a href="./update">РЕДАКТИРОВАНИЕ |</a>
+        <a href="./delete">УДАЛЕНИЕ</a>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+

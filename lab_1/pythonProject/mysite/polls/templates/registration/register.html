@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="px-10">
+    <h3 class="py-5">РЕГИСТРАЦИЯ</h3>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button class=" border " type="submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+    </form>
+</div>
+{% endblock %}
+

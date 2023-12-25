@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="py-5 px-10">АУТЕНТИФИКАЦИЯ</h3>
+
+{% if form.errors %}
+    <div>
+        <p>НЕВЕРНЫЙ ЛОГИН ИЛИ ПАРОЛЬ</p>
+    </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div>
+        <p>ВЫ ВОШЛИ<a href="{% url 'logout' %}">ВЫЙТИ</a></p>
+    </div>
+{% else %}
+    <form class="px-10" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <button class="border" type="submit">ВОЙТИ</button>
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+{% endif %}
+
+
+
+{% endblock %}
+

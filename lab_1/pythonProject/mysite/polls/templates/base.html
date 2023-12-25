@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+{% block sidebar %}
+
+<nav class=" py-10  ">
+    <a class=" px-10"   href="{% url 'polls:home_page' %}">ГЛАВНАЯ СТРАНИЦА</a>
+    {% if user.is_authenticated %}
+    <a class=" px-10" href="{% url 'logout' %}">ВЫХОД{{ user.login }}</a>
+    <a class=" px-10" href="{% url 'polls:log_user' request.user.id %}">МОЯ СТРАНИЦА</a>
+    {% else %}
+    <a class="px-10" href="{% url 'login' %}">ВХОД</a>
+    <a class="px-10" href="{% url 'polls:register' %}">РЕГИСТРАЦИЯ</a>
+    {% endif %}
+</nav>
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>
